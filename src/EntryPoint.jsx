@@ -33,7 +33,7 @@ export function EntryPoint() {
 
   return (
     <h3>
-       Resposta do conteúdo: {respostaServidor}
+       Resposta do conteúdo !: {respostaServidor}
     </h3>
     );
 }
