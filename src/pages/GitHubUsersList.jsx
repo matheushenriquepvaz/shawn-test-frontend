@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import LogoGitHub from "../components/LogoGitHub"
 import UsersTable from "../components/UsersTable"
 import { useNavigate, useSearchParams  } from 'react-router-dom';
+import Paginator from "../components/Paginator";
 
 
 
@@ -17,8 +18,18 @@ function GitHubUsersList() {
     navigate(`/shawn-test-frontend/${user.login}/details`);
   }
 
-  const changeUrlQueryParams = () => {
-    history.replaceState(null,'','/shawn-test-frontend?since=10');
+  const handlePreviousAction = () => {
+    if(since >= 5) {
+      var newSince = since - 5;
+      history.replaceState(null,'','/shawn-test-frontend?since=' + newSince);
+      setSince(newSince);
+    }
+  }
+
+  const handleNextAction = () => {
+    var newSince = since + 5;
+    history.replaceState(null,'','/shawn-test-frontend?since=' + newSince);
+    setSince(newSince);
   }
 
   useEffect(() => {
@@ -34,17 +45,19 @@ function GitHubUsersList() {
     <div>
         <LogoGitHub/>
         <div className="grid mt-5">
-          <div className="col-12">
-            <button type="button" onClick={() => {changeUrlQueryParams()}}>Change</button>
-          </div>
-        </div>
-        <div className="grid mt-5">
             <div className="col-1"></div>
             <div className="col-10">
                 <UsersTable handleClickCardUser={redirectHandler} since={since}/>
             </div>
             <div className="col-1"></div>            
-        </div>        
+        </div>
+        <div className="grid mt-5">
+            <div className="col-1"></div>
+            <div className="col-10">
+                <Paginator previusAction={handlePreviousAction} nextAction={handleNextAction}/>
+            </div>
+            <div className="col-1"></div>            
+        </div>       
     </div> 
   )
 }

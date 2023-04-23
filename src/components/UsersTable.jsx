@@ -6,7 +6,7 @@ import axios from 'axios';
 function UsersTable({handleClickCardUser, since}) {
 
     const [listaUsers, setListaUsers] = useState([]);
-    const [itensPerPage, setItensPerPage] = useState(10);
+    const [itensPerPage, setItensPerPage] = useState(5);
     const [idInit, setIdinit] = useState(1);
 
     const handleUserClicked = (user) => {
@@ -18,12 +18,12 @@ function UsersTable({handleClickCardUser, since}) {
         console.log('since: ' + since);
         if (since && since !== null) {
             setIdinit(since);
-        }
+        }        
         const findUsers = async () => {
             const axiosResp = await axios.get(`http://localhost:8081/api/users`,
             {
                 params : {
-                    since : idInit,
+                    since : since,
                     per_page: itensPerPage
                 }
             }
@@ -32,7 +32,8 @@ function UsersTable({handleClickCardUser, since}) {
             setListaUsers(users);
         };
         findUsers();
-    }, [])
+        
+    }, [since])
 
     return (
     <>
