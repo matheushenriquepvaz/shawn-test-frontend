@@ -13,8 +13,8 @@ function App() {
   return (
     <div className='surface-300 w-screen min-h-screen h-auto'>     
       <Routes>
-        <Route path='/shawn-test-frontend' element={<GitHubUsersList/>} errorElement={<ErrorPage />}></Route>
-        <Route path='/shawn-test-frontend/:username/details' element={<GitHubUserDetails/>}></Route>
+        <Route path='/' element={<GitHubUsersList/>} errorElement={<ErrorPage />}></Route>
+        <Route path='/:username/details' element={<GitHubUserDetails/>}></Route>
       </Routes>
     </div>
   )

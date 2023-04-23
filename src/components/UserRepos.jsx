@@ -9,7 +9,7 @@ function UserRepos({username}) {
     useEffect(() => {
         console.log(`Rendering the ${username} repos !`);
         const findUser = async () => {
-            const axiosResp = await axios.get(`http://localhost:8081/api/users/${username}/repos`);
+            const axiosResp = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/users/${username}/repos`);
             const reposFetched = axiosResp.data
             setRepos(reposFetched);
         };

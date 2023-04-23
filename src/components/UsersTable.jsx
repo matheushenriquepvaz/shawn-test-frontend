@@ -20,7 +20,7 @@ function UsersTable({handleClickCardUser, since}) {
             setIdinit(since);
         }        
         const findUsers = async () => {
-            const axiosResp = await axios.get(`http://localhost:8081/api/users`,
+            const axiosResp = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/users`,
             {
                 params : {
                     since : since,

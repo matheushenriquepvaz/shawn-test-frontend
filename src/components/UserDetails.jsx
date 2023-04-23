@@ -13,7 +13,7 @@ function UserDetails({username}) {
     useEffect(() => {
         console.log('usuario recebido: ' + username)
         const findUser = async () => {
-            const axiosResp = await axios.get(`http://localhost:8081/api/users/${username}/details`);
+            const axiosResp = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/users/${username}/details`);
             const users = axiosResp.data
             setUserFetched(users);
         };

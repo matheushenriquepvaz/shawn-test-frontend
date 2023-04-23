@@ -15,20 +15,20 @@ function GitHubUsersList() {
   const redirectHandler = (user) => {
     console.log('chamou o callback')
     console.log(user.login)
-    navigate(`/shawn-test-frontend/${user.login}/details`);
+    navigate(`/${user.login}/details`);
   }
 
   const handlePreviousAction = () => {
     if(since >= 5) {
       var newSince = since - 5;
-      history.replaceState(null,'','/shawn-test-frontend?since=' + newSince);
+      history.replaceState(null,'','/?since=' + newSince);
       setSince(newSince);
     }
   }
 
   const handleNextAction = () => {
     var newSince = since + 5;
-    history.replaceState(null,'','/shawn-test-frontend?since=' + newSince);
+    history.replaceState(null,'','/?since=' + newSince);
     setSince(newSince);
   }
 
