@@ -1,8 +1,8 @@
 
 
-function AvatarImage({imageUrl}) {
+function AvatarImage({imageUrl, size}) {
   return (
-    <img src={imageUrl} className="h-7rem w-7rem"/>
+    <img src={imageUrl} className={ size }/>
   )
 }
 

@@ -3,15 +3,22 @@ import UserIterable from './UserIterable';
 import UsersTableHead from './UsersTableHead';
 import axios from 'axios';
 
-function UsersTable() {
+function UsersTable({handleClickCardUser, since}) {
 
     const [listaUsers, setListaUsers] = useState([]);
     const [itensPerPage, setItensPerPage] = useState(10);
     const [idInit, setIdinit] = useState(1);
 
-    
+    const handleUserClicked = (user) => {
+        console.log('login user: ' + JSON.stringify(user))
+        handleClickCardUser(user);
+    }
 
     useEffect(() => {
+        console.log('since: ' + since);
+        if (since && since !== null) {
+            setIdinit(since);
+        }
         const findUsers = async () => {
             const axiosResp = await axios.get(`http://localhost:8081/api/users`,
             {
@@ -35,7 +42,7 @@ function UsersTable() {
             </div>
         </div>
         {listaUsers.map((user) => (
-            <div className='grid card' key={user.id}>
+            <div className='grid card cursor-pointer' key={user.id} onClick={() => handleUserClicked(user)}>
                 <div className='col-12'>
                     <UserIterable user={user}/>
                 </div>

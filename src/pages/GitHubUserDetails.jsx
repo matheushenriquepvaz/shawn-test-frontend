@@ -1,15 +1,14 @@
-import LogoGitHub from "./LogoGitHub"
-import UsersTable from "./UsersTable"
+import LogoGitHub from "../components/LogoGitHub"
+import UserDetails from "../components/UserDetails"
 
-
-function GitHubUsersList() {
+function GitHubUserDetails() {
   return (
     <div>
         <LogoGitHub/>
         <div className="grid mt-5">
             <div className="col-1"></div>
             <div className="col-10">
-                <UsersTable/>
+                <UserDetails/>
             </div>
             <div className="col-1"></div>            
         </div>
@@ -17,4 +16,4 @@ function GitHubUsersList() {
   )
 }
 
-export default GitHubUsersList
+export default GitHubUserDetails
